@@ -1,1316 +1,393 @@
-<!-- 
-  HIREOVATE VERSION CONTROL
-  Version: 1.27.0
-  Status: FINAL_LOCKDOWN
-  Last Updated: April 12, 2026
-  Changes: 
-    - LOCKDOWN: 100% preservation of all v1.24.0 text, images, headers, and pricing.
-    - RECTIFICATION: Zero modifications to visual or functional code.
-    - PRODUCTION: Validated Stripe checkout logic and workforce intelligence sections.
--->
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hireovate | Career Intelligence + Access</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .hero-bg-animate {
-            transform: scale(1.05);
-            opacity: 0;
-            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .hero-bg-animate.visible {
-            transform: scale(1);
-            opacity: 0.1;
-        }
-
-        .fade-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .delay-300 { transition-delay: 300ms; }
-        .delay-700 { transition-delay: 700ms; }
-
-        @keyframes pulse-soft {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        .animate-pulse-soft {
-            animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        /* Subtle Shimmer for Title */
-        .shimmer-text {
-            background: linear-gradient(90deg, #000 0%, #444 45%, #000 55%, #000 100%);
-            background-size: 200% auto;
-            color: transparent;
-            background-clip: text;
-            -webkit-background-clip: text;
-            animation: shimmer 2s ease-out forwards;
-            animation-delay: 1.5s;
-        }
-
-        @keyframes shimmer {
-            to {
-                background-position: -200% center;
-            }
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #d4d4d4;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a3a3a3;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offer Grace — Turn Rejection Into Opportunity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --white: #FFFFFF;
+      --green: #10B981;
+      --cream: #FAFAF9;
+      --gray-100: #F5F5F4;
+      --gray-200: #E7E5E4;
+      --gray-400: #A8A29E;
+      --gray-500: #78716C;
+      --gray-600: #57534E;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--black);
+      line-height: 1.6;
+      background: var(--white);
+    }
+    
+    /* Header */
+    .header {
+      border-bottom: 1px solid var(--gray-200);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-family: 'Times New Roman', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    
+    .logo span { color: var(--green); }
+    
+    .nav-link {
+      color: var(--gray-600);
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    
+    /* Hero */
+    .hero {
+      padding: 5rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-family: 'Times New Roman', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero h1 em {
+      font-style: italic;
+    }
+    
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--gray-600);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+    
+    .btn-primary {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: opacity 0.15s;
+    }
+    
+    .btn-primary:hover { opacity: 0.85; }
+    
+    /* Stats */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+      flex-wrap: wrap;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-family: 'Times New Roman', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--black);
+    }
+    
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    /* Section */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .section-label {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    
+    .section-title {
+      font-family: 'Times New Roman', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+    
+    .section-text {
+      color: var(--gray-600);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    
+    /* Tools Grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .tool-card {
+      background: var(--gray-100);
+      border-radius: 4px;
+      padding: 1.5rem;
+    }
+    
+    .tool-arrow {
+      color: var(--green);
+      margin-right: 0.5rem;
+    }
+    
+    .tool-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: inline;
+    }
+    
+    .tool-desc {
+      color: var(--gray-500);
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+    
+    /* Pricing */
+    .pricing-section {
+      background: var(--cream);
+      border-top: 1px solid var(--gray-200);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    
+    .pricing-box {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .price {
+      font-family: 'Times New Roman', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+    }
+    
+    .price-details {
+      color: var(--gray-600);
+    }
+    
+    .price-details strong {
+      color: var(--black);
+    }
+    
+    /* Email Preview */
+    .email-preview {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      border-radius: 4px;
+      margin-top: 2rem;
+      overflow: hidden;
+    }
+    
+    .email-header {
+      background: var(--gray-200);
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    
+    .email-body {
+      padding: 1.5rem;
+      font-family: 'Times New Roman', serif;
+      font-size: 0.9375rem;
+      color: var(--gray-600);
+    }
+    
+    .email-highlight {
+      background: #D1FAE5;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      color: #047857;
+      font-weight: 600;
+      display: inline-block;
+    }
+    
+    /* CTA */
+    .cta {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    
+    .cta h2 {
+      font-family: 'Times New Roman', serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    
+    .cta p {
+      color: var(--gray-400);
+      margin-bottom: 2rem;
+    }
+    
+    .btn-green {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 0.875rem;
+      border-top: 1px solid var(--gray-200);
+    }
+    
+    footer a { color: var(--gray-600); }
+  </style>
 </head>
-<body class="bg-white text-neutral-900 selection:bg-black selection:text-white">
-
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 border-b border-neutral-100 bg-white/80 backdrop-blur-md">
-        <div class="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-10">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-black text-white shadow-sm">
-                        <i data-lucide="target" class="w-[18px] h-[18px]"></i>
-                    </div>
-                    <span class="text-lg font-semibold tracking-tight text-neutral-900">Hireovate</span>
-                </div>
-                
-                <div class="hidden md:flex items-center gap-8 text-[13px] font-semibold uppercase tracking-wider text-neutral-500">
-                    <a href="#" class="transition hover:text-black">Home</a>
-                    <a href="#offer" class="transition hover:text-black">Services</a>
-                    <a href="#pathways" class="transition hover:text-black">Pathways</a>
-                    <a href="#samples" class="transition hover:text-black">Samples</a>
-                    <a href="#team" class="transition hover:text-black">Team</a>
-                    <a href="#pricing" class="transition hover:text-black">Pricing</a>
-                    <a href="mailto:contact@hireovate.ai" class="rounded-full bg-black px-6 py-2 text-white transition hover:bg-neutral-800 shadow-sm">Get In Touch</a>
-                </div>
-
-                <button id="menu-toggle" class="md:hidden p-2 text-neutral-900">
-                    <i data-lucide="menu" id="menu-icon"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-neutral-100 px-4 py-6 space-y-4 font-sans">
-            <a href="#" class="mobile-link block text-sm font-bold uppercase tracking-widest text-neutral-500 hover:text-black">Home</a>
-            <a href="#offer" class="mobile-link block text-sm font-bold uppercase tracking-widest text-neutral-500 hover:text-black">Services</a>
-            <a href="#pathways" class="mobile-link block text-sm font-bold uppercase tracking-widest text-neutral-500 hover:text-black">Pathways</a>
-            <a href="#samples" class="mobile-link block text-sm font-bold uppercase tracking-widest text-neutral-500 hover:text-black">Samples</a>
-            <a href="#team" class="mobile-link block text-sm font-bold uppercase tracking-widest text-neutral-500 hover:text-black">Team</a>
-            <a href="#pricing" class="mobile-link block text-sm font-bold uppercase tracking-widest text-neutral-500 hover:text-black">Pricing</a>
-            <a href="mailto:contact@hireovate.ai" class="mobile-link block w-full rounded-full bg-black px-6 py-3 text-center text-white text-xs font-bold uppercase tracking-widest">Get Started</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="relative min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden bg-white py-12 md:py-16">
-        <div id="hero-bg" class="hero-bg-animate absolute inset-0 pointer-events-none">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" alt="Background" class="h-full w-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
-        </div>
-
-        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 text-center">
-            <div id="hero-content" class="fade-up delay-300">
-                <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-neutral-100 bg-neutral-50/50 px-3 py-1 sm:px-4 sm:py-1.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-400 backdrop-blur-sm">
-                    <span class="h-1.5 w-1.5 rounded-full bg-black animate-pulse-soft"></span>
-                    Intelligence + Access
-                </div>
-                <!-- Dynamic Title -->
-                <h1 id="hero-title" class="text-5xl font-semibold leading-none tracking-tighter text-black sm:text-8xl lg:text-[7.5rem] shimmer-text">
-                    Hireovate
-                </h1>
-                <p class="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-neutral-500 md:text-xl font-normal">
-                   The intelligence and execution layer for workforce transition in the AI economy.
-                </p>
-                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
-                    <a href="#pricing" class="w-full sm:w-auto group relative overflow-hidden rounded-full bg-black px-8 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-xl transition-all hover:scale-[1.02] hover:bg-neutral-800 flex items-center justify-center gap-2">
-                        View Services <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
-                    </a>
-                    <a href="#samples" class="w-full sm:w-auto rounded-full border border-neutral-200 bg-white px-8 py-4 text-sm font-bold uppercase tracking-widest text-neutral-900 transition-all hover:bg-neutral-50 shadow-sm">
-                        View Sample Report
-                    </a>
-                </div>
-            </div>
-            
-            <div id="hero-stats" class="fade-up delay-700 mt-12 sm:mt-16 flex items-center justify-center gap-8 sm:gap-16">
-                <div class="text-center">
-                    <div class="text-xl sm:text-2xl font-semibold tracking-tight">25+</div>
-                    <div class="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-neutral-400 mt-0.5">Years Experience</div>
-                </div>
-                <div class="h-8 w-px bg-neutral-200"></div>
-                <div class="text-center">
-                    <div class="text-xl sm:text-2xl font-semibold tracking-tight">AI</div>
-                    <div class="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-neutral-400 mt-0.5">Sourced Intel</div>
-                </div>
-                <div class="h-8 w-px bg-neutral-200"></div>
-                <div class="text-center">
-                    <div class="text-xl sm:text-2xl font-semibold tracking-tight">3x</div>
-                    <div class="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-neutral-400 mt-0.5">Search Speed</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="offer" class="relative border-y border-neutral-100 bg-[#fafafa] py-16 md:py-24">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-            
-            <!-- Narrative Block -->
-            <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
-                <div class="max-w-xl">
-                    <div class="text-[11px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-6">SERVICES BUILT FOR THE MODERN TRANSITION MARKET</div>
-                    <h2 class="text-4xl sm:text-5xl font-semibold tracking-tighter text-black leading-tight mb-8">
-                        Career transition <br/><span class="text-neutral-400 italic">has changed.</span>
-                    </h2>
-                    <div class="space-y-6 text-lg text-neutral-600 leading-relaxed font-normal">
-                        <p>
-                            Traditional outplacement was built for a slower, more predictable economy. The AI economy is different. Roles are changing faster, hiring pathways are less transparent, internal recruiters are more selective, and strong candidates are often competing in noisier and more complex markets.
-                        </p>
-                        <p class="font-bold text-black italic">
-                            Hireovate was built for this new reality.
-                        </p>
-                        <p>
-                            We combine in-house executive recruiting experience from some of the world’s most demanding companies with empathy, market intelligence, and modern AI tools to help people and organisations move through transition with more clarity, precision, and momentum.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Fixed Narrative Visual -->
-                <div class="relative p-1">
-                    <div class="absolute inset-0 bg-neutral-200/20 rounded-[4rem] blur-3xl"></div>
-                    <div class="relative bg-white border border-neutral-200 rounded-[3.5rem] shadow-2xl p-8 sm:p-12 aspect-square flex flex-col items-center justify-center text-center overflow-hidden">
-                        <div class="absolute inset-0 pointer-events-none opacity-[0.03]">
-                            <svg viewBox="0 0 100 100" class="h-full w-full">
-                                <pattern id="diagGrid" width="10" height="10" patternUnits="userSpaceOnUse">
-                                    <path d="M 10 0 L 0 0 0 10" fill="none" stroke="black" stroke-width="0.5"/>
-                                </pattern>
-                                <rect width="100" height="100" fill="url(#diagGrid)" />
-                            </svg>
-                        </div>
-                        
-                        <div class="relative">
-                            <div class="h-20 w-20 sm:h-28 sm:w-28 rounded-full bg-black flex items-center justify-center text-white mb-8 mx-auto shadow-2xl">
-                                <i data-lucide="cpu" class="w-10 h-10 sm:w-14 sm:h-14 animate-pulse-soft"></i>
-                            </div>
-                            <div class="text-[10px] font-black uppercase tracking-[0.4em] text-neutral-400 mb-2">SYSTEM STATUS</div>
-                            <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-black mb-4">AI ECONOMY READY</h3>
-                            <div class="h-px w-12 bg-neutral-200 mx-auto mb-6"></div>
-                            <p class="text-sm text-neutral-500 max-w-xs mx-auto leading-relaxed">
-                                Our transition logic is mapped directly to current market volatility signals and hiring pattern shifts.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Two Cohorts Breakdown -->
-            <div class="text-center max-w-4xl mx-auto mb-16">
-                <div class="text-[11px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-4">WHO WE SERVE</div>
-                <h2 class="text-4xl font-semibold tracking-tighter text-black md:text-5xl lg:text-6xl mb-6">Transition Intelligence for <br/>Workforce Change.</h2>
-                <p class="text-lg text-neutral-500 leading-relaxed font-normal max-w-3xl mx-auto">
-                    We offer tailored career intelligence and transition execution for both individuals and organizations, addressing the unique challenges of the modern AI economy.
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-10 mb-24">
-                <!-- Individuals Card -->
-                <div class="bg-white p-8 md:p-12 rounded-[2.5rem] border border-neutral-200 shadow-sm flex flex-col">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest mb-8">FOR INDIVIDUALS</div>
-                    <h3 class="text-3xl font-bold text-black mb-6 tracking-tight">Personal Transition Intelligence</h3>
-                    <p class="text-lg text-neutral-600 leading-relaxed mb-10 font-medium">Surgical support for professionals who refuse to leave their next move to chance. We turn market volatility into a strategic advantage.</p>
-                    
-                    <div class="space-y-6 flex-grow">
-                        <h4 class="text-xs font-black uppercase tracking-[0.2em] text-neutral-400">Intelligence-Led Deliverables:</h4>
-                        <ul class="grid sm:grid-cols-1 gap-y-5">
-                            <li class="flex items-start gap-3 text-sm text-neutral-700">
-                                <i data-lucide="zap" class="w-5 h-5 text-[#10b981] shrink-0 mt-0.5"></i> 
-                                <span><b class="text-black">Strategic Direction:</b> 1:1 Executive Kickoff to understand in detail the opportunities you are looking for and want to explore.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-neutral-700">
-                                <i data-lucide="bar-chart-3" class="w-5 h-5 text-[#10b981] shrink-0 mt-0.5"></i> 
-                                <span><b class="text-black">Market Arbitrage:</b> Real-time Compensation Benchmarking to ensure you maximize offer value and equity upside.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-neutral-700">
-                                <i data-lucide="target" class="w-5 h-5 text-[#10b981] shrink-0 mt-0.5"></i> 
-                                <span><b class="text-black">Surgical Targeting:</b> Priority-ranked lists of "High-Growth" companies actively hiring for your specific profile.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-neutral-700">
-                                <i data-lucide="crosshair" class="w-5 h-5 text-[#10b981] shrink-0 mt-0.5"></i> 
-                                <span><b class="text-black">Match Intelligence:</b> Proprietary Role Match Scoring against live roles and potential roles coming.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-neutral-700">
-                                <i data-lucide="mail-check" class="w-5 h-5 text-[#10b981] shrink-0 mt-0.5"></i> 
-                                <span><b class="text-black">Access Templates:</b> High-conversion, Executive Recruiter-grade outreach scripts designed to pierce through the noise.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-neutral-700">
-                                <i data-lucide="database" class="w-5 h-5 text-[#10b981] shrink-0 mt-0.5"></i> 
-                                <span><b class="text-black">Data Enrichment and Access Mapping:</b> Recruiter, HR and Hiring Manager email contact details to improve response rates.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-neutral-700">
-                                <i data-lucide="map" class="w-5 h-5 text-[#10b981] shrink-0 mt-0.5"></i> 
-                                <span><b class="text-black">Execution Roadmap:</b> A definitive "next-steps" action plan for immediate reentry and long-term career resilience.</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="mt-12 p-6 bg-neutral-900 rounded-2xl border border-white/5">
-                        <p class="text-[10px] font-black uppercase tracking-[0.4em] text-[#10b981] mb-2">Primary Outcome</p>
-                        <p class="text-sm font-bold text-white leading-snug italic">Absolute clarity on where you compete, who to talk to, and how to win a higher-value offer in a tougher market.</p>
-                    </div>
-                </div>
-
-                <!-- Companies Card -->
-                <div class="bg-white p-8 md:p-12 rounded-[2.5rem] border border-neutral-200 shadow-sm flex flex-col">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-black text-white rounded-full text-[10px] font-black uppercase tracking-widest mb-8">FOR COMPANIES</div>
-                    <h3 class="text-3xl font-bold text-black mb-6 tracking-tight">Workforce Transition Solutions</h3>
-                    <p class="text-lg text-neutral-600 leading-relaxed mb-10 font-medium">Defensible, intelligence-led support for organisations who view employee transition as a critical brand and cultural event.</p>
-                    
-                    <div class="space-y-6 flex-grow">
-                        <h4 class="text-xs font-black uppercase tracking-[0.2em] text-neutral-400">Enterprise Capability:</h4>
-                        <ul class="grid sm:grid-cols-1 gap-y-5">
-                            <li class="flex items-start gap-3 text-sm text-neutral-700">
-                                <i data-lucide="layout" class="w-5 h-5 text-black shrink-0 mt-0.5"></i> 
-                                <span><b class="text-black">Custom Architecture:</b> Bespoke Transition Program Design tailored to specific headcount shifts and company values.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-neutral-700">
-                                <i data-lucide="layers" class="w-5 h-5 text-black shrink-0 mt-0.5"></i> 
-                                <span><b class="text-black">Precision Grouping:</b> Intelligent Cohort Segmentation to optimize support resources based on tenure and role complexity.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-neutral-700">
-                                <i data-lucide="trending-up" class="w-5 h-5 text-black shrink-0 mt-0.5"></i> 
-                                <span><b class="text-black">Strategic Command:</b> High-level Transition Strategy Advisory for HR and Executive teams to manage internal sentiment.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-neutral-700">
-                                <i data-lucide="user-check" class="w-5 h-5 text-black shrink-0 mt-0.5"></i> 
-                                <span><b class="text-black">Executive Stability:</b> Dedicated Leadership Advisory to manage sensitive management-level exits with total discretion.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-neutral-700">
-                                <i data-lucide="users" class="w-5 h-5 text-black shrink-0 mt-0.5"></i> 
-                                <span><b class="text-black">Scalable Impact:</b> Intensive Group Workshops that deliver world-class career intel to high-volume populations.</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-neutral-700">
-                                <i data-lucide="shield-check" class="w-5 h-5 text-black shrink-0 mt-0.5"></i> 
-                                <span><b class="text-black">Reputation Shield:</b> Proactive brand protection strategies that maintain long-term trust and alumni loyalty.</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="mt-12 p-6 bg-neutral-50 rounded-2xl border border-neutral-100">
-                        <p class="text-[10px] font-black uppercase tracking-[0.4em] text-neutral-400 mb-2">Business ROI</p>
-                        <p class="text-sm font-bold text-neutral-900 leading-snug italic">Modern, defensible outplacement that replaces generic tools with recruiter-grade intelligence to protect your talent brand.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Capabilities Matrix -->
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <div class="text-[11px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-4">CAPABILITIES MATRIX</div>
-                <h2 class="text-3xl font-semibold tracking-tight text-black">Our Service Areas</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-neutral-200 rounded-[2.5rem] bg-white overflow-hidden shadow-sm">
-                <!-- 1) Strategy and Positioning -->
-                <div class="p-8 border-b md:border-b-0 md:border-r border-neutral-100 flex flex-col">
-                    <div class="flex items-center gap-3 mb-8">
-                        <div class="h-10 w-10 rounded-xl bg-black text-white flex items-center justify-center shrink-0">
-                            <i data-lucide="compass" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-[11px] font-black uppercase tracking-[0.2em] text-black">Strategy &<br/>Positioning</h3>
-                    </div>
-                    <ul class="space-y-4 flex-grow">
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Career strategy</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Executive positioning</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Transition planning</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Personal narrative development</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Role-fit assessment</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Title translation</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Adjacent-role identification</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> AI readiness assessment</li>
-                    </ul>
-                </div>
-
-                <!-- 2) Market Intelligence -->
-                <div class="p-8 border-b md:border-b-0 lg:border-r border-neutral-100 flex flex-col">
-                    <div class="flex items-center gap-3 mb-8">
-                        <div class="h-10 w-10 rounded-xl bg-black text-white flex items-center justify-center shrink-0">
-                            <i data-lucide="search" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-[11px] font-black uppercase tracking-[0.2em] text-black">Market<br/>Intelligence</h3>
-                    </div>
-                    <ul class="space-y-4 flex-grow">
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Market scans</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Target company mapping</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Hidden opportunity mapping</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Future role prediction</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Compensation benchmarking</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Private and public market research</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Organisational and stakeholder mapping</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Recruiter and hiring-manager analysis</li>
-                    </ul>
-                </div>
-
-                <!-- 3) Access and Execution -->
-                <div class="p-8 border-b md:border-b-0 md:border-r border-neutral-100 flex flex-col">
-                    <div class="flex items-center gap-3 mb-8">
-                        <div class="h-10 w-10 rounded-xl bg-black text-white flex items-center justify-center shrink-0">
-                            <i data-lucide="trending-up" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-[11px] font-black uppercase tracking-[0.2em] text-black">Access &<br/>Execution</h3>
-                    </div>
-                    <ul class="space-y-4 flex-grow">
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Outreach strategy</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Messaging and sequencing support</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Referral pathway identification</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Direct contact research</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Interview preparation</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Offer strategy and negotiation support</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Action plans for the first 30, 60, and 90 days</li>
-                    </ul>
-                </div>
-
-                <!-- 4) Workforce Transition Support -->
-                <div class="p-8 flex flex-col">
-                    <div class="flex items-center gap-3 mb-8">
-                        <div class="h-10 w-10 rounded-xl bg-black text-white flex items-center justify-center shrink-0">
-                            <i data-lucide="users" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-[11px] font-black uppercase tracking-[0.2em] text-black">Workforce<br/>Transition</h3>
-                    </div>
-                    <ul class="space-y-4 flex-grow">
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Cohort transition programs</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Group workshops</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> 1:1 transition advisory</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Leadership transition</li>
-                        <li class="text-[13px] font-semibold text-neutral-500 flex gap-2"><i data-lucide="chevron-right" class="w-3.5 h-3.5 mt-0.5 text-neutral-300 shrink-0"></i> Executive transition command</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pathways Section -->
-    <section id="pathways" class="py-16 lg:py-24 bg-white">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-            <div class="text-center max-w-4xl mx-auto mb-16 sm:mb-20">
-                <div class="text-[11px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-4">METHODOLOGY</div>
-                <h2 class="text-4xl font-semibold tracking-tighter text-black md:text-6xl leading-[1.1]">
-                    Tailored Transition <br/><span class="text-neutral-400 italic font-normal">Pathways.</span>
-                </h2>
-                <p class="mt-6 text-lg sm:text-xl text-neutral-500 leading-relaxed font-normal">
-                    The modern economy disrupts roles unevenly. Our advisory is structured to address the specific complexity of your unique career pivot.
-                </p>
-            </div>
-
-            <div class="space-y-10">
-                <!-- Top Row: 01, 02, 03 -->
-                <div class="grid gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                    <!-- Pathway 01 -->
-                    <div class="group relative flex flex-col rounded-[2.5rem] border border-neutral-100 bg-white p-10 transition-all hover:shadow-2xl">
-                        <div class="text-7xl font-black text-black/5 mb-8 group-hover:text-black transition-colors duration-500 leading-none">01</div>
-                        <h3 class="text-2xl font-bold text-black mb-4 tracking-tight">Core Function Evolution</h3>
-                        <p class="text-[15px] leading-relaxed text-neutral-500 font-normal">
-                            For leaders remaining in their current field who need to modernize. We surgically integrate AI-driven workflows and advanced strategies to ensure your expertise remains <b class="text-black">top-tier and indispensable</b>.
-                        </p>
-                    </div>
-
-                    <!-- Pathway 02 -->
-                    <div class="group relative flex flex-col rounded-[2.5rem] border border-neutral-100 bg-white p-10 transition-all hover:shadow-2xl">
-                        <div class="text-7xl font-black text-black/5 mb-8 group-hover:text-black transition-colors duration-500 leading-none">02</div>
-                        <h3 class="text-2xl font-bold text-black mb-4 tracking-tight">Strategic Career Pivot</h3>
-                        <p class="text-[15px] leading-relaxed text-neutral-500 font-normal">
-                            Translating your deep domain knowledge into a high-growth adjacent role. We focus on <b class="text-black">Translational Arbitrage</b>—repositioning your existing value to capture emerging market demand.
-                        </p>
-                    </div>
-
-                    <!-- Pathway 03 -->
-                    <div class="group relative flex flex-col rounded-[2.5rem] border border-neutral-100 bg-white p-10 transition-all hover:shadow-2xl">
-                        <div class="text-7xl font-black text-black/5 mb-8 group-hover:text-black transition-colors duration-500 leading-none">03</div>
-                        <h3 class="text-2xl font-bold text-black mb-4 tracking-tight">Full Career Reinvention</h3>
-                        <p class="text-[15px] leading-relaxed text-neutral-500 font-normal">
-                            A rigorous "next-act" roadmap for those pursuing a complete departure. We architect your <b class="text-black">Professional Identity Shift</b> with structured milestones for entering an entirely new sector.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Bottom Row Centered: 04, 05 -->
-                <div class="flex flex-col md:flex-row justify-center gap-10">
-                    <!-- Pathway 04 -->
-                    <div class="group relative flex flex-col rounded-[2.5rem] border border-neutral-100 bg-white p-10 transition-all hover:shadow-2xl w-full md:w-[calc(50%-20px)] lg:w-[calc(33.333%-27px)]">
-                        <div class="text-7xl font-black text-black/5 mb-8 group-hover:text-black transition-colors duration-500 leading-none">04</div>
-                        <h3 class="text-2xl font-bold text-black mb-4 tracking-tight">Portfolio & Advisory Design</h3>
-                        <p class="text-[15px] leading-relaxed text-neutral-500 font-normal">
-                            Transitioning from a single-employer model to a portfolio of <b class="text-black">Fractional Leadership</b> roles and Board seats. We help you package your expertise into a multi-stream revenue engine.
-                        </p>
-                    </div>
-
-                    <!-- Pathway 05 -->
-                    <div class="group relative flex flex-col rounded-[2.5rem] border border-neutral-100 bg-white p-10 transition-all hover:shadow-2xl w-full md:w-[calc(50%-20px)] lg:w-[calc(33.333%-27px)]">
-                        <div class="text-7xl font-black text-black/5 mb-8 group-hover:text-black transition-colors duration-500 leading-none">05</div>
-                        <h3 class="text-2xl font-bold text-black mb-4 tracking-tight">Entrepreneurial Launchpad</h3>
-                        <p class="text-[15px] leading-relaxed text-neutral-500 font-normal">
-                            For the corporate leader moving into business ownership. We provide the strategic <b class="text-black">Founder's Intelligence</b> required to successfully exit the executive world and launch your own venture.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team" class="py-16 lg:py-20 bg-white">
-        <div class="mx-auto max-w-5xl px-4 sm:px-6 text-center">
-            <div class="mb-10">
-                <div class="text-[11px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-4">Founder's Story</div>
-                <h2 class="text-4xl font-semibold tracking-tight text-black md:text-6xl leading-tight">Built by experience, <br/>driven by empathy.</h2>
-                <div class="mt-8 max-w-2xl mx-auto border-t border-neutral-100 pt-8">
-                    <p class="text-xl text-neutral-600 italic font-medium leading-relaxed">"Hireovate was built to remove the uncertainty from career transitions."</p>
-                    <p class="mt-3 text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-400">— Declan, Founder & CEO</p>
-                </div>
-            </div>
-
-            <div class="mb-12">
-                <div class="rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden shadow-2xl relative bg-neutral-50">
-                    <img src="https://i.ibb.co/yFGkk1yK/family.jpg" alt="Declan" class="w-full h-auto block">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-40"></div>
-                </div>
-            </div>
-
-            <div class="grid gap-10 lg:grid-cols-2 text-left text-base sm:text-lg leading-relaxed text-neutral-500">
-                <div class="space-y-4 font-normal">
-                    <p>Declan is an executive talent leader with 25+ years of experience operating inside some of the world’s most competitive hiring environments, including Meta, LinkedIn, Microsoft, HubSpot, Apollo.io, and Neko Health.</p>
-                    <p>He specialises in building leadership teams across AI, technology, and high-growth companies, working directly with founders, CEOs, and executives to solve complex hiring challenges.</p>
-                    <div class="pt-4 space-y-3">
-                        <div class="flex gap-4 items-start">
-                            <i data-lucide="award" class="w-5 h-5 text-neutral-400 shrink-0 mt-1"></i>
-                            <div class="text-sm font-normal">Former Ireland U18 & U21 Soccer International. Awarded a soccer scholarship at University College Dublin.</div>
-                        </div>
-                        <div class="flex gap-4 items-start">
-                            <i data-lucide="heart" class="w-5 h-5 text-neutral-400 shrink-0 mt-1"></i>
-                            <div class="text-sm font-normal">Actively involved in charitable work with Fields of Life, Merchants Quay and Concern.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="space-y-4 font-normal">
-                    <p>In parallel, he is an active investor across venture and private markets, including Stage 2 Capital, with investments in 40+ companies and experience through 2 IPOs.</p>
-                    <p>He has been made redundant 3x in his career and understands how challenging these moments can be for both sides of the table.</p>
-                    <div class="pt-4 p-6 rounded-[1.5rem] bg-white italic text-neutral-500 text-sm leading-relaxed border border-neutral-100 shadow-sm font-medium">
-                        Having been made redundant 3x in his career—and having had to lead teams through redundancy 3x as well—Declan fully understands how challenging these moments are.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Deliverables Section (Samples) -->
-    <section id="samples" class="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-10 bg-white border-y border-neutral-100">
-        <div class="text-center max-w-3xl mx-auto mb-20">
-            <div class="text-[11px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-4">THE DELIVERABLES</div>
-            <h2 class="text-4xl font-semibold tracking-tight text-black md:text-6xl">What lands in your inbox.</h2>
-        </div>
-
-        <div class="max-w-6xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <!-- Report Visual -->
-                <div class="relative group">
-                    <div class="absolute -inset-4 bg-neutral-50 rounded-[3rem] -z-10 group-hover:bg-neutral-100/50 transition-colors"></div>
-                    <div class="bg-white rounded-[2.5rem] border border-neutral-200 shadow-2xl overflow-hidden aspect-[4/5] flex flex-col">
-                        <div class="bg-black p-8 flex justify-between items-center text-white">
-                            <div class="flex items-center gap-3">
-                                <i data-lucide="target" class="w-5 h-5"></i>
-                                <span class="text-[10px] font-black uppercase tracking-[0.4em]">HIREOVATE INTEL</span>
-                            </div>
-                        </div>
-                        <div class="flex-grow flex items-center justify-center bg-[#0a0a0a] relative overflow-hidden">
-                            <!-- Production Locked Neural Intel Graphic -->
-                            <svg viewBox="0 0 400 240" class="w-full h-full">
-                                <defs>
-                                    <pattern id="dotGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-                                        <circle cx="2" cy="2" r="1" fill="#ffffff" fill-opacity="0.05" />
-                                    </pattern>
-                                    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                                        <feGaussianBlur stdDeviation="3" result="blur" />
-                                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                                    </filter>
-                                </defs>
-                                
-                                <rect width="100%" height="100%" fill="url(#dotGrid)" />
-
-                                <!-- Neural Pathways -->
-                                <g stroke="#ffffff" stroke-opacity="0.15" stroke-width="1" fill="none">
-                                    <path d="M 40 180 L 120 140 L 180 180 L 260 120 L 340 150" />
-                                    <path d="M 60 60 L 140 90 L 260 120 L 320 60" />
-                                    <path d="M 120 140 L 140 90" />
-                                    <path d="M 180 180 L 220 220" />
-                                    <path d="M 260 120 L 280 180" />
-                                </g>
-
-                                <!-- Data Nodes -->
-                                <g fill="#ffffff" fill-opacity="0.3">
-                                    <circle cx="40" cy="180" r="2" />
-                                    <circle cx="60" cy="60" r="3" />
-                                    <circle cx="120" cy="140" r="2.5" />
-                                    <circle cx="140" cy="90" r="3" />
-                                    <circle cx="180" cy="180" r="2" />
-                                    <circle cx="220" cy="220" r="2" />
-                                    <circle cx="280" cy="180" r="2" />
-                                    <circle cx="320" cy="60" r="2.5" />
-                                    <circle cx="340" cy="150" r="3" />
-                                </g>
-
-                                <!-- Primary Target Node -->
-                                <g transform="translate(260, 120)">
-                                    <circle cx="0" cy="0" r="28" fill="none" stroke="#10b981" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="2 4" />
-                                    <circle cx="0" cy="0" r="16" fill="none" stroke="#10b981" stroke-opacity="0.4" stroke-width="1" />
-                                    <circle cx="0" cy="0" r="5" fill="#10b981" filter="url(#glow)" />
-                                    <circle cx="0" cy="0" r="2" fill="#ffffff" />
-                                    <path d="M -35 0 L -20 0 M 20 0 L 35 0 M 0 -35 L 0 -20 M 0 20 L 0 35" stroke="#10b981" stroke-opacity="0.4" stroke-width="1" />
-                                </g>
-
-                                <!-- Precision Arrow & UI Label -->
-                                <g transform="translate(260, 120)">
-                                    <path d="M -40 -40 L -14 -14" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.9" />
-                                    <polygon points="-12,-12 -21,-13 -13,-21" fill="#ffffff" fill-opacity="0.9" />
-                                    <path d="M -40 -40 L -130 -40" stroke="#ffffff" stroke-width="1" stroke-opacity="0.3" />
-                                    <rect x="-130" y="-60" width="75" height="16" fill="#10b981" fill-opacity="0.15" rx="2" />
-                                    <text x="-125" y="-49" fill="#10b981" font-family="monospace" font-size="8" font-weight="bold" letter-spacing="1">TARGET LOCKED</text>
-                                    <text x="-130" y="-30" fill="#ffffff" font-family="monospace" font-size="7" fill-opacity="0.6">PROBABILITY: 99.4%</text>
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="p-8 border-t border-neutral-100 bg-white">
-                            <div class="h-2 w-32 bg-black rounded-full mb-3"></div>
-                            <div class="h-1.5 w-full bg-neutral-100 rounded-full mb-2"></div>
-                            <div class="h-1.5 w-2/3 bg-neutral-100 rounded-full"></div>
-                        </div>
-                    </div>
-                    <!-- Data Accuracy Badge -->
-                    <div class="absolute -bottom-6 -right-6 bg-black text-white px-8 py-5 rounded-3xl shadow-xl hidden md:block border border-white/10">
-                        <div class="text-[10px] font-black uppercase tracking-[0.4em] mb-1 text-neutral-400">DATA ACCURACY</div>
-                        <div class="text-2xl font-bold tracking-tighter text-[#10b981]">99%</div>
-                    </div>
-                </div>
-
-                <!-- Report Content -->
-                <div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-black text-white rounded-full text-[9px] font-black uppercase tracking-widest mb-6">FEATURED DELIVERABLE</div>
-                    <h3 class="text-4xl font-semibold tracking-tight text-neutral-900 mb-6">Market Scan Report</h3>
-                    <p class="text-lg text-neutral-500 leading-relaxed font-normal mb-10">A surgical intelligence report mapping your specific professional ecosystem. We move beyond generic listings to show you the hidden architecture of your market.</p>
-                    
-                    <div class="grid sm:grid-cols-2 gap-x-10 gap-y-6">
-                        <div class="flex items-start gap-3 group">
-                            <div class="mt-1 flex-shrink-0 w-4 h-4 rounded-full border border-neutral-300 flex items-center justify-center group-hover:border-black transition-colors">
-                                <div class="w-1.5 h-1.5 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                            <span class="text-[13px] font-semibold text-neutral-600 leading-snug group-hover:text-black transition-colors">Candidate Positioning Analysis</span>
-                        </div>
-                        <div class="flex items-start gap-3 group">
-                            <div class="mt-1 flex-shrink-0 w-4 h-4 rounded-full border border-neutral-300 flex items-center justify-center group-hover:border-black transition-colors">
-                                <div class="w-1.5 h-1.5 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                            <span class="text-[13px] font-semibold text-neutral-600 leading-snug group-hover:text-black transition-colors">Priority-Tiered Market Scan</span>
-                        </div>
-                        <div class="flex items-start gap-3 group">
-                            <div class="mt-1 flex-shrink-0 w-4 h-4 rounded-full border border-neutral-300 flex items-center justify-center group-hover:border-black transition-colors">
-                                <div class="w-1.5 h-1.5 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                            <span class="text-[13px] font-semibold text-neutral-600 leading-snug group-hover:text-black transition-colors">Active and Hidden Opportunity Mapping</span>
-                        </div>
-                        <div class="flex items-start gap-3 group">
-                            <div class="mt-1 flex-shrink-0 w-4 h-4 rounded-full border border-neutral-300 flex items-center justify-center group-hover:border-black transition-colors">
-                                <div class="w-1.5 h-1.5 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                            <span class="text-[13px] font-semibold text-neutral-600 leading-snug group-hover:text-black transition-colors">AI Impact and Readiness Assessment</span>
-                        </div>
-                        <div class="flex items-start gap-3 group">
-                            <div class="mt-1 flex-shrink-0 w-4 h-4 rounded-full border border-neutral-300 flex items-center justify-center group-hover:border-black transition-colors">
-                                <div class="w-1.5 h-1.5 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                            <span class="text-[13px] font-semibold text-neutral-600 leading-snug group-hover:text-black transition-colors">Tailored Outreach and Engagement Templates</span>
-                        </div>
-                        <div class="flex items-start gap-3 group">
-                            <div class="mt-1 flex-shrink-0 w-4 h-4 rounded-full border border-neutral-300 flex items-center justify-center group-hover:border-black transition-colors">
-                                <div class="w-1.5 h-1.5 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            </div>
-                            <span class="text-[13px] font-semibold text-neutral-600 leading-snug group-hover:text-black transition-colors">Localized Compensation Benchmarking</span>
-                        </div>
-                    </div>
-
-                    <button class="mt-12 flex items-center gap-3 px-8 py-4 bg-neutral-900 text-white rounded-full text-xs font-bold uppercase tracking-[0.2em] hover:bg-black transition-all hover:scale-105 shadow-lg">
-                        DOWNLOAD SAMPLE PREVIEW <i data-lucide="file-text" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section (LOCKED DOWN - ADDED CLEAR PAYMENT BUTTONS) -->
-    <section id="pricing" class="bg-white py-16 lg:py-20">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-                <div class="text-[11px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-4">INVESTMENT</div>
-                <h2 class="text-4xl font-semibold tracking-tight text-black md:text-5xl">Professional advisory tiers.</h2>
-            </div>
-
-            <!-- Pricing Grid -->
-            <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-                <!-- Tier 1 -->
-                <div onclick="handlePayment('tier_1')" class="flex flex-col rounded-[2rem] border border-neutral-200 bg-white p-6 sm:p-8 transition-all hover:shadow-xl cursor-pointer group">
-                    <div class="text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-400 mb-4">Entry</div>
-                    <h3 class="text-xl font-semibold tracking-tight mb-1">Market Scan Report</h3>
-                    <div class="text-3xl font-bold mb-1 tracking-tighter group-hover:text-[#10b981] transition-colors">$399</div>
-                    <div class="text-[10px] font-bold uppercase tracking-[0.2em] mb-4 text-neutral-500">€350 | £300</div>
-                    <p class="text-[13px] mb-6 leading-relaxed text-neutral-500 min-h-[60px]">Fast, sharp, live market intelligence on where the market is now for your target job profile.</p>
-                    <div class="space-y-3 flex-grow mb-8">
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> 1 x 60-min kickoff meeting
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Compensation Benchmark Analysis
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Ranked Target List of Companies
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Role Match Scoring
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Personalised Out Reach Examples
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Recommended next steps
-                        </div>
-                    </div>
-                    <button class="w-full py-4 bg-black text-white text-[11px] font-bold uppercase tracking-widest rounded-xl hover:bg-neutral-800 transition-all flex items-center justify-center gap-2">
-                        Secure Checkout <i data-lucide="lock" class="w-3 h-3"></i>
-                    </button>
-                </div>
-
-                <!-- Tier 2 (Featured) -->
-                <div onclick="handlePayment('tier_2')" class="flex flex-col rounded-[2rem] border-black bg-black text-white p-6 sm:p-8 transition-all hover:shadow-xl relative z-10 lg:scale-[1.05] cursor-pointer group">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-500">Core Offer</div>
-                        <div class="rounded-full bg-white px-3 py-0.5 text-[9px] font-black uppercase text-black">MOST SELECTED</div>
-                    </div>
-                    <h3 class="text-xl font-semibold tracking-tight mb-1">Strategic Job Report</h3>
-                    <div class="text-3xl font-bold mb-1 tracking-tighter group-hover:text-[#10b981] transition-colors">$999</div>
-                    <div class="text-[10px] font-bold uppercase tracking-[0.2em] mb-4 text-neutral-300">€900 | £800</div>
-                    <p class="text-[13px] mb-6 leading-relaxed text-neutral-400 min-h-[60px]">Deeper research building on the Market Scan Report.</p>
-                    <div class="space-y-3 flex-grow mb-8">
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-200">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-neutral-400 mt-1"></i> 1 x 60-min kickoff meeting
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-200">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-neutral-400 mt-1"></i> CV/LinkedIn Improvement analysis
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-200">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-neutral-400 mt-1"></i> 1 company deep dive analysis
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-200">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-neutral-400 mt-1"></i> 5 email addresses
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-200">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-neutral-400 mt-1"></i> Future job opening predictor
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-200">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-neutral-400 mt-1"></i> Network Target Map
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-200">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-neutral-400 mt-1"></i> Deep analysis of market dynamics
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-200">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-neutral-400 mt-1"></i> AI displacement risk analysis
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-200">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-neutral-400 mt-1"></i> pre IPO VC Target List
-                        </div>
-                    </div>
-                    <button class="w-full py-4 bg-white text-black text-[11px] font-bold uppercase tracking-widest rounded-xl hover:bg-neutral-100 transition-all flex items-center justify-center gap-2">
-                        Secure Checkout <i data-lucide="lock" class="w-3 h-3"></i>
-                    </button>
-                </div>
-
-                <!-- Tier 3 -->
-                <div onclick="handlePayment('tier_3')" class="flex flex-col rounded-[2rem] border border-neutral-200 bg-white p-6 sm:p-8 transition-all hover:shadow-xl cursor-pointer group">
-                    <div class="text-[9px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-4">White-Glove</div>
-                    <h3 class="text-xl font-semibold tracking-tight mb-1">Career Offensive Elite</h3>
-                    <div class="text-3xl font-bold mb-1 tracking-tighter group-hover:text-[#10b981] transition-colors">$4,500</div>
-                    <div class="text-[10px] font-bold uppercase tracking-[0.2em] mb-4 text-neutral-500">€4,150 | £3,550</div>
-                    <p class="text-[13px] mb-6 leading-relaxed text-neutral-500 min-h-[60px]">Materials for senior candidates: target-account research, stakeholder mapping, and access strategy.</p>
-                    <div class="space-y-3 flex-grow mb-8">
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> 2 x 60-min strategy meetings
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> WhatsApp, Email, Zoom support
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> 3 x company deep dive reports
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Interview prep & practice questions
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Tailored outreach & sequence design
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> 20-25 email addresses
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Offer negotiation war room
-                        </div>
-                    </div>
-                    <button class="w-full py-4 bg-black text-white text-[11px] font-bold uppercase tracking-widest rounded-xl hover:bg-neutral-800 transition-all flex items-center justify-center gap-2">
-                        Secure Checkout <i data-lucide="lock" class="w-3 h-3"></i>
-                    </button>
-                </div>
-
-                <!-- Tier 4 -->
-                <div onclick="handlePayment('tier_4')" class="flex flex-col rounded-[2rem] border-2 border-neutral-200 bg-white p-6 sm:p-8 transition-all hover:shadow-xl relative cursor-pointer group">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-[#10b981] px-4 py-1 text-[10px] font-black uppercase tracking-widest text-white shadow-lg">ELITE RETAINER</div>
-                    <div class="text-[9px] font-bold uppercase tracking-[0.3em] text-neutral-400 mb-4">C-Suite / SVP</div>
-                    <h3 class="text-xl font-semibold tracking-tight mb-1">Executive Command</h3>
-                    <div class="text-3xl font-bold mb-1 tracking-tighter group-hover:text-[#10b981] transition-colors">$11,000</div>
-                    <div class="text-[10px] font-bold uppercase tracking-[0.2em] mb-4 text-neutral-500">€10,100 | £8,700</div>
-                    <p class="text-[13px] mb-6 leading-relaxed text-neutral-500 min-h-[60px]">A comprehensive partnership for board-level and executive leaders.</p>
-                    <div class="space-y-3 flex-grow mb-8">
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> 4 x 60-min strategy meetings
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> WhatsApp, Email, Zoom support
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Deep sentiment analysis on Glassdoor +
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> 7 x company deep dive reports
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> 45 to 50 email addresses
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Interview prep & practice questions
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Organisational politics briefing
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Dossiers on every panellist
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Full offer negotiation support
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> PE/VC & Investor intelligence
-                        </div>
-                        <div class="flex items-start gap-2 text-[11px] font-semibold text-neutral-700">
-                            <i data-lucide="check-circle-2" class="w-3 h-3 text-black mt-1"></i> Legal/Financial recommendations
-                        </div>
-                    </div>
-                    <button class="w-full py-4 bg-black text-white text-[11px] font-bold uppercase tracking-widest rounded-xl hover:bg-neutral-800 transition-all flex items-center justify-center gap-2">
-                        Secure Checkout <i data-lucide="lock" class="w-3 h-3"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- GTM Search Offensive -->
-            <section class="mx-auto max-w-7xl px-4 py-10 lg:px-10">
-                <div class="py-12 px-8 sm:px-12 rounded-[3.5rem] bg-black text-white relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-neutral-800 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 opacity-30 pointer-events-none"></div>
-                    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-neutral-900 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 opacity-20 pointer-events-none"></div>
-                    
-                    <div class="relative z-10">
-                        <div class="max-w-full mb-10 text-center lg:text-left">
-                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.4em] text-neutral-400 mb-5">
-                                <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-[#10b981]"></i> PREMIUM ENGAGEMENT
-                            </div>
-                            <h2 class="text-4xl font-semibold tracking-tighter text-white md:text-5xl lg:text-6xl leading-[1.1] mb-5">
-                                The GTM Search <span class="italic text-neutral-500">Offensive.</span>
-                            </h2>
-                            <p class="text-lg text-neutral-400 leading-relaxed font-normal max-w-4xl mx-auto lg:mx-0">
-                                For executive roles, discovery isn't the hurdle—entry is. We don't just find jobs; we engineer a surgical Go-To-Market offensive to secure your next leadership seat through market intelligence and insider access. We map reporting lines, identify sponsors, and sequence your entry so you land at the top of the pile.
-                            </p>
-                        </div>
-
-                        <div class="grid gap-6 lg:grid-cols-3">
-                            <div class="space-y-4">
-                                <div class="flex items-center gap-3 pb-3 border-b border-white/10">
-                                    <div class="p-1.5 rounded-lg bg-white/5">
-                                        <i data-lucide="radar" class="w-5 h-5 text-neutral-400"></i>
-                                    </div>
-                                    <h3 class="text-[12px] font-bold uppercase tracking-[0.2em] text-white">Phase 1: Market Intelligence</h3>
-                                </div>
-                                <div class="space-y-3">
-                                    <div class="p-5 bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 rounded-2xl transition-all group">
-                                        <h4 class="text-[14px] font-bold text-white mb-1 group-hover:text-[#10b981] transition-colors">Insider Sentiment Analysis</h4>
-                                        <p class="text-[13px] text-neutral-500 leading-relaxed font-normal">Mapping leadership stability, cultural health signals, and unwritten organizational norms.</p>
-                                    </div>
-                                    <div class="p-5 bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 rounded-2xl transition-all group">
-                                        <h4 class="text-[14px] font-bold text-white mb-1 group-hover:text-[#10b981] transition-colors">Precision Comp Benchmarking</h4>
-                                        <p class="text-[13px] text-neutral-500 leading-relaxed font-normal">Surgical modeling of total rewards against regional and global sector percentiles.</p>
-                                    </div>
-                                    <div class="p-5 bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 rounded-2xl transition-all group">
-                                        <h4 class="text-[14px] font-bold text-white mb-1 group-hover:text-[#10b981] transition-colors">Signal Analysis</h4>
-                                        <p class="text-[13px] text-neutral-500 leading-relaxed font-normal">Identifying board-level shifts and VC funding triggers that signal future role openings.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="space-y-4">
-                                <div class="flex items-center gap-3 pb-3 border-b border-white/10">
-                                    <div class="p-1.5 rounded-lg bg-white/5">
-                                        <i data-lucide="network" class="w-5 h-5 text-neutral-400"></i>
-                                    </div>
-                                    <h3 class="text-[12px] font-bold uppercase tracking-[0.2em] text-white">Phase 2: Access Strategy</h3>
-                                </div>
-                                <div class="space-y-3">
-                                    <div class="p-5 bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 rounded-2xl transition-all group">
-                                        <h4 class="text-[14px] font-bold text-white mb-1 group-hover:text-[#10b981] transition-colors">Target Selection</h4>
-                                        <p class="text-[13px] text-neutral-500 leading-relaxed font-normal">High-conviction company selection mapped by strategic fit and conversion probability.</p>
-                                    </div>
-                                    <div class="p-5 bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 rounded-2xl transition-all group">
-                                        <h4 class="text-[14px] font-bold text-white mb-1 group-hover:text-[#10b981] transition-colors">Stakeholder Mapping</h4>
-                                        <p class="text-[13px] text-neutral-500 leading-relaxed font-normal">Visualizing direct reporting lines to find the shortest path to decision-makers.</p>
-                                    </div>
-                                    <div class="p-5 bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 rounded-2xl transition-all group">
-                                        <h4 class="text-[14px] font-bold text-white mb-1 group-hover:text-[#10b981] transition-colors">Outreach Sequencing</h4>
-                                        <p class="text-[13px] text-neutral-500 leading-relaxed font-normal">Coordinated multi-channel entry through manager contact and sponsor follow-ups.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="space-y-4">
-                                <div class="flex items-center gap-3 pb-3 border-b border-white/10">
-                                    <div class="p-1.5 rounded-lg bg-white/5">
-                                        <i data-lucide="handshake" class="w-5 h-5 text-neutral-400"></i>
-                                    </div>
-                                    <h3 class="text-[12px] font-bold uppercase tracking-[0.2em] text-white">Phase 3: Transition Support</h3>
-                                </div>
-                                <div class="space-y-3">
-                                    <div class="p-5 bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 rounded-2xl transition-all group">
-                                        <h4 class="text-[14px] font-bold text-white mb-1 group-hover:text-[#10b981] transition-colors">Negotiation War Room</h4>
-                                        <p class="text-[13px] text-neutral-500 leading-relaxed font-normal">Tactical narrative design to build leverage and secure maximum total rewards value.</p>
-                                    </div>
-                                    <div class="p-5 bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 rounded-2xl transition-all group">
-                                        <h4 class="text-[14px] font-bold text-white mb-1 group-hover:text-[#10b981] transition-colors">Interview Preparation</h4>
-                                        <p class="text-[13px] text-neutral-500 leading-relaxed font-normal">Dossiers on every panelist detailing their biases and specific business objectives.</p>
-                                    </div>
-                                    <div class="p-5 bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 rounded-2xl transition-all group">
-                                        <h4 class="text-[14px] font-bold text-white mb-1 group-hover:text-[#10b981] transition-colors">Onboarding Strategy</h4>
-                                        <p class="text-[13px] text-neutral-500 leading-relaxed font-normal">Advisory for the first 90 days to ensure alignment with organizational goals.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Workforce Transition B2B Section (Transition Intelligence for Workforce Change) -->
-            <div id="b2b" class="mx-auto max-w-7xl px-4 lg:px-10 mb-8 md:mb-12">
-                <div class="text-center max-w-4xl mx-auto mb-12 sm:mb-16">
-                    <div class="text-[11px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-4">ENTERPRISE SOLUTIONS</div>
-                    <h2 class="text-4xl font-semibold tracking-tight text-black md:text-5xl lg:text-6xl leading-[1.1]">
-                        Transition Intelligence for <br/> Workforce Change.
-                    </h2>
-                    <p class="mt-6 text-lg sm:text-xl text-neutral-500 leading-relaxed font-normal">
-                        When companies reduce headcount, the standard response is severance plus generic outplacement. That is no longer enough. Hireovate provides a more strategic transition model—combining recruiter-grade intelligence and surgical employee positioning.
-                    </p>
-                </div>
-
-                <div class="grid gap-6 grid-cols-1 lg:grid-cols-2">
-                    <!-- Offering 1 -->
-                    <div class="group flex flex-col rounded-[2.5rem] bg-[#fafafa] border border-neutral-100 p-8 sm:p-10 transition-all hover:shadow-xl hover:bg-white">
-                        <div class="flex items-center justify-between mb-8">
-                            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white">
-                                <i data-lucide="zap" class="w-6 h-6 text-[#10b981]"></i>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-[9px] font-black uppercase tracking-widest text-neutral-400">PROGRAM INVESTMENT</div>
-                                <div class="text-xl font-bold tracking-tight">From $10,000</div>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold tracking-tight text-neutral-900">Surgical Execution</h3>
-                        <div class="mt-2 text-[10px] font-black text-[#10b981] uppercase tracking-[0.2em]">Audience: Scale Workforce Populations</div>
-                        <p class="mt-4 text-sm leading-relaxed text-neutral-500 font-normal">Recruiter-grade transition support at scale. We replace passive "counseling" with active market intelligence to get your people back into high-value roles faster.</p>
-                        <div class="mt-8 pt-8 border-t border-neutral-200 space-y-5">
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="shield-check" class="w-5 h-5 text-black shrink-0 mt-0.5"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Baseline Intel:</b> Standardized Market Scan Reports mapping immediate reentry pathways for common profiles.
-                                </span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="bar-chart-2" class="w-5 h-5 text-black shrink-0 mt-0.5"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Profile Optimization:</b> Automated yet recruiter-validated LinkedIn and CV scrubbing for modern ATS systems.
-                                </span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="mail" class="text-black shrink-0 w-5 h-5 mt-0.5"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Conversion Access:</b> Direct access to our high-conversion outreach templates for pierced engagement.
-                                </span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="calendar" class="text-black shrink-0 w-5 h-5 mt-0.5"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Rapid Reentry:</b> Structured 30-day "offensive" roadmap designed to minimize career gaps.
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Offering 2 -->
-                    <div class="group flex flex-col rounded-[2.5rem] bg-[#fafafa] border border-neutral-100 p-8 sm:p-10 transition-all hover:shadow-xl hover:bg-white">
-                        <div class="flex items-center justify-between mb-8">
-                            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white">
-                                <i data-lucide="radar" class="w-6 h-6 text-[#10b981]"></i>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-[9px] font-black uppercase tracking-widest text-neutral-400">PROGRAM INVESTMENT</div>
-                                <div class="text-xl font-bold tracking-tight">From $15,000</div>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold tracking-tight text-neutral-900">Transition Intelligence</h3>
-                        <div class="mt-2 text-[10px] font-black text-[#10b981] uppercase tracking-[0.2em]">Audience: Managers, Specialists & Senior ICs</div>
-                        <p class="mt-4 text-sm leading-relaxed text-neutral-500 font-normal">Deep-dive market mapping and cohort intelligence. We identify the "Hidden Market" for your specialized talent, ensuring they land in roles that honor their tenure.</p>
-                        <div class="mt-8 pt-8 border-t border-neutral-200 space-y-5">
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="search" class="w-5 h-5 text-black shrink-0 mt-0.5"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Market Framing:</b> Surgical Compensation and role-match benchmarking to align expectations with reality.
-                                </span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="users" class="w-5 h-5 text-black shrink-0 mt-0.5"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Hybrid Support:</b> High-impact group masterclasses combined with precision 1:1 strategy sessions.
-                                </span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="target" class="text-black shrink-0 w-5 h-5 mt-0.5"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Target Mapping:</b> Identification of companies with specific "Cultural Fit" signals and active hiring momentum.
-                                </span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="git-branch" class="text-black shrink-0 w-5 h-5 mt-0.5"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Taxonomy Translation:</b> Modernizing "legacy" titles into current AI-economy equivalents to expand search volume.
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Offering 3 -->
-                    <div class="group flex flex-col rounded-[2.5rem] bg-[#fafafa] border border-neutral-100 p-8 sm:p-10 transition-all hover:shadow-xl hover:bg-white">
-                        <div class="flex items-center justify-between mb-8">
-                            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white">
-                                <i data-lucide="trending-up" class="w-6 h-6 text-[#10b981]"></i>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-[9px] font-black uppercase tracking-widest text-neutral-400">PER-PERSON INVESTMENT</div>
-                                <div class="text-xl font-bold tracking-tight">$5,000 / Person</div>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold tracking-tight text-neutral-900">Leadership Transition</h3>
-                        <div class="mt-2 text-[10px] font-black text-[#10b981] uppercase tracking-[0.2em]">Audience: Directors & Heads of Function</div>
-                        <p class="mt-4 text-sm leading-relaxed text-neutral-500 font-normal">A bespoke offensive for senior leaders. We map reporting lines, identify unlisted sponsors, and design the transition narrative for board-level or fractional paths.</p>
-                        <div class="mt-8 pt-8 border-t border-neutral-200 space-y-5">
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="clipboard-check" class="w-5 h-5 text-black shrink-0 mt-0.5"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Bespoke Dossier:</b> Regional and sector-specific Market Scan Reports mapping "Executive-level" hidden gaps.
-                                </span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="user-plus" class="w-5 h-5 text-black shrink-0 mt-0.5"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Stakeholder Mapping:</b> Identifying sponsors and direct reporting lines to pierce organizational hierarchies.
-                                </span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="layout" class="text-black shrink-0 w-5 h-5 mt-0.5"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Portfolio Design:</b> Positioning strategies for fractional, board-level, or multi-stream advisory careers.
-                                </span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="message-square" class="text-black shrink-0 w-5 h-5 mt-0.5"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Situational Mastery:</b> Advanced interview preparation focused on board-level politics and equity structures.
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Offering 4 -->
-                    <div class="group flex flex-col rounded-[2.5rem] bg-[#fafafa] border border-neutral-100 p-8 sm:p-10 transition-all hover:shadow-xl hover:bg-white">
-                        <div class="flex items-center justify-between mb-8">
-                            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-black text-white">
-                                <i data-lucide="crown" class="w-6 h-6 text-[#10b981]"></i>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-[9px] font-black uppercase tracking-widest text-neutral-400">PER-PERSON INVESTMENT</div>
-                                <div class="text-xl font-bold tracking-tight">$10,000 / Person</div>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold tracking-tight text-neutral-900">Executive Command</h3>
-                        <div class="mt-2 text-[10px] font-black text-[#10b981] uppercase tracking-[0.2em]">Audience: VP, SVP, C-suite, & Global Leads</div>
-                        <p class="mt-4 text-sm leading-relaxed text-neutral-500 font-normal">White-glove, total-discretion stewardship for your most sensitive transitions. Includes PE/VC investor context and full-cycle equity negotiation support.</p>
-                        <div class="mt-8 pt-8 border-t border-neutral-200 space-y-5">
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="gem" class="w-5 h-5 text-black shrink-0 mt-1"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Elite Dossier:</b> Complete executive market mapping including PE/VC funding triggers and board-room shifts.
-                                </span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="eye" class="w-5 h-5 text-black shrink-0 mt-1"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Sentiment Intelligence:</b> Deep sentiment analysis on target boards and political briefing of hiring panels.
-                                </span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="briefcase" class="text-black shrink-0 w-5 h-5 mt-1"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Equity Strategy:</b> Full-cycle support on complex "Total Rewards" negotiation, including stock and vesting.
-                                </span>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="award" class="text-black shrink-0 w-5 h-5 mt-1"></i>
-                                <span class="text-[13px] text-neutral-700 leading-relaxed">
-                                    <b class="text-black">Discreet Stewardship:</b> High-touch 1:1 engagement managed with total confidentiality and brand protection.
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pricing Dynamics & Proposal Note -->
-                <div class="mt-8 p-8 rounded-[2.5rem] bg-white border border-neutral-200 shadow-sm">
-                    <div class="flex flex-col md:flex-row gap-10">
-                        <div class="md:w-1/2">
-                            <div class="text-[10px] font-black uppercase tracking-[0.3em] text-[#10b981] mb-4">PRICING DYNAMICS</div>
-                            <h4 class="text-xl font-semibold text-black mb-4">Fees are shaped by:</h4>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div class="flex items-center gap-2 text-[13px] font-semibold text-neutral-600">
-                                    <div class="h-1.5 w-1.5 rounded-full bg-black"></div> Cohort volume
-                                </div>
-                                <div class="flex items-center gap-2 text-[13px] font-semibold text-neutral-600">
-                                    <div class="h-1.5 w-1.5 rounded-full bg-black"></div> Complexity mix
-                                </div>
-                                <div class="flex items-center gap-2 text-[13px] font-semibold text-neutral-600">
-                                    <div class="h-1.5 w-1.5 rounded-full bg-black"></div> Regional focus
-                                </div>
-                                <div class="flex items-center gap-2 text-[13px] font-semibold text-neutral-600">
-                                    <div class="h-1.5 w-1.5 rounded-full bg-black"></div> 1:1 Intensity
-                                </div>
-                                <div class="flex items-center gap-2 text-[13px] font-semibold text-neutral-600">
-                                    <div class="h-1.5 w-1.5 rounded-full bg-black"></div> Program duration
-                                </div>
-                            </div>
-                        </div>
-                        <div class="md:w-1/2 flex items-center">
-                            <div class="p-6 bg-neutral-900 rounded-2xl border border-white/5 italic text-[14px] leading-relaxed text-neutral-400 font-medium">
-                                <span class="text-white block mb-2 not-italic font-bold text-xs uppercase tracking-widest">PROPOSAL NOTE</span>
-                                "A final investment profile is issued once the impacted population and specific transition objectives are confirmed, ensuring absolute ROI alignment."
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Workforce Transition ROI -->
-                <div class="mt-8 p-8 sm:p-12 rounded-[3rem] border border-black/[0.04] bg-neutral-900 text-white shadow-sm overflow-hidden relative">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
-                    <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <div class="text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-400 mb-4">FOR THE EMPLOYER</div>
-                            <h3 class="text-2xl sm:text-3xl font-semibold tracking-tight mb-6">A surgical, intelligence-led brand protection strategy.</h3>
-                            <div class="space-y-4">
-                                <div class="flex items-center gap-3 text-sm text-neutral-400">
-                                    <i data-lucide="shield-check" class="w-4 h-4 text-[#10b981]"></i> Immediate talent brand protection and alumni trust
-                                </div>
-                                <div class="flex items-center gap-3 text-sm text-neutral-400">
-                                    <i data-lucide="message-square" class="w-4 h-4 text-[#10b981]"></i> Definitive external narrative for sensitive workforce change
-                                </div>
-                                <div class="flex items-center gap-3 text-sm text-neutral-400">
-                                    <i data-lucide="trending-up" class="w-4 h-4 text-[#10b981]"></i> Accelerated reentry that minimizes severance liability
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-6">
-                            <a href="mailto:contact@hireovate.ai" class="flex items-center justify-center gap-3 rounded-full bg-white px-8 py-5 text-sm font-bold uppercase tracking-widest text-black transition-all hover:scale-105 shadow-md">
-                                DISCUSS B2B PARTNERSHIP <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                            </a>
-                            <div class="text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-500 text-center">Available for 5+ Person Reductions</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-12 border-t border-neutral-100 bg-white">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 text-center">
-            <div class="flex items-center justify-center gap-2 mb-8">
-                <div class="flex h-6 w-6 items-center justify-center rounded-md bg-black text-white">
-                    <i data-lucide="target" class="w-3.5 h-3.5"></i>
-                </div>
-                <span class="text-lg font-semibold tracking-tight text-neutral-900">Hireovate</span>
-            </div>
-            <div class="flex flex-wrap justify-center gap-6 sm:gap-10 text-[10px] font-bold uppercase tracking-[0.4em] text-neutral-400">
-                <a href="#" class="hover:text-black transition-colors">PRIVACY</a>
-                <a href="#" class="hover:text-black transition-colors">TERMS</a>
-                <a href="#" class="hover:text-black transition-colors">LINKEDIN</a>
-            </div>
-            <div class="mt-8 text-[9px] font-medium text-neutral-300 uppercase tracking-widest">
-                © 2024 Hireovate. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        lucide.createIcons();
-
-        // PAYMENT HANDLING (LOCKED DOWN MECHANISM)
-        function handlePayment(tier) {
-            // Replace these with your actual Stripe Payment Links from your Dashboard
-            const stripeLinks = {
-                'tier_1': 'https://buy.stripe.com/example_link_399',
-                'tier_2': 'https://buy.stripe.com/example_link_999',
-                'tier_3': 'https://buy.stripe.com/example_link_4500',
-                'tier_4': 'https://buy.stripe.com/example_link_11000'
-            };
-
-            const link = stripeLinks[tier];
-            if (link) {
-                window.location.href = link;
-            }
-        }
-
-        // Text Scramble Logic
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        function scramble(element) {
-            let iteration = 0;
-            const originalText = element.innerText;
-            let interval = null;
-            
-            clearInterval(interval);
-            
-            interval = setInterval(() => {
-                element.innerText = originalText
-                    .split("")
-                    .map((letter, index) => {
-                        if(index < iteration) {
-                            return originalText[index];
-                        }
-                        return letters[Math.floor(Math.random() * 26)];
-                    })
-                    .join("");
-                
-                if(iteration >= originalText.length){ 
-                    clearInterval(interval);
-                }
-                
-                iteration += 1 / 4;
-            }, 40);
-        }
-
-        // Reveal animations on load
-        window.addEventListener('load', () => {
-            const heroBg = document.getElementById('hero-bg');
-            const heroContent = document.getElementById('hero-content');
-            const heroStats = document.getElementById('hero-stats');
-            const heroTitle = document.getElementById('hero-title');
-
-            setTimeout(() => {
-                if(heroBg) heroBg.classList.add('visible');
-                if(heroContent) heroContent.classList.add('visible');
-                if(heroStats) heroStats.classList.add('visible');
-                
-                // Trigger scramble after content fade-up starts
-                if(heroTitle) {
-                    setTimeout(() => scramble(heroTitle), 400);
-                }
-            }, 100);
-        });
-
-        // Mobile menu logic
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = document.getElementById('menu-icon');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        let isMenuOpen = false;
-
-        function toggleMenu() {
-            isMenuOpen = !isMenuOpen;
-            if (isMenuOpen) {
-                mobileMenu.classList.remove('hidden');
-                menuIcon.setAttribute('data-lucide', 'x');
-            } else {
-                mobileMenu.classList.add('hidden');
-                menuIcon.setAttribute('data-lucide', 'menu');
-            }
-            lucide.createIcons();
-        }
-
-        if(menuToggle) menuToggle.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if(isMenuOpen) toggleMenu();
-            });
-        });
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            section.classList.add('fade-up');
-            scrollObserver.observe(section);
-        });
-    </script>
+<body>
+  <header class="header">
+    <div class="logo">Offer<span>Grace</span></div>
+    <a href="mailto:hello@offergrace.com" class="nav-link">Contact</a>
+  </header>
+  
+  <section class="hero">
+    <h1>Turn every rejection<br><em>into an act of generosity.</em></h1>
+    <p>One link in your rejection email gives candidates 30 days of free AI career coaching. Two cents per click. Capped at $100/month.</p>
+    <a href="#how" class="btn-primary">See How It Works →</a>
+  </section>
+  
+  <section class="stats">
+    <div class="stat">
+      <div class="stat-value">2¢</div>
+      <div class="stat-label">Per Click</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">$100</div>
+      <div class="stat-label">Monthly Cap</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">90s</div>
+      <div class="stat-label">Setup Time</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">6</div>
+      <div class="stat-label">Pro Tools</div>
+    </div>
+  </section>
+  
+  <section class="section" id="how">
+    <div class="section-label">The Integration</div>
+    <h2 class="section-title">One line. That's it.</h2>
+    <p class="section-text">Add a single line to your ATS rejection email template. When candidates click, they land on a coaching dashboard — paid for by you, free to them.</p>
+    
+    <div class="email-preview">
+      <div class="email-header">Your ATS — Rejection Email Template</div>
+      <div class="email-body">
+        Dear [Name],<br><br>
+        Thank you for interviewing with us. After careful consideration, we've decided to move forward with other candidates. We wish you the best.<br><br>
+        <span class="email-highlight">P.S. We'd like to support your journey → offergrace.com/g/your-company</span>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="section-label">What Candidates Receive</div>
+    <h2 class="section-title">Six professional tools. Thirty days free.</h2>
+    
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="tool-arrow">→</span>
+        <span class="tool-title">Career Coach</span>
+        <p class="tool-desc">24/7 AI career advisor for job search, negotiation, and pivots.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-arrow">→</span>
+        <span class="tool-title">Profile Review</span>
+        <p class="tool-desc">CV and LinkedIn analysis with scores and rewrites.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-arrow">→</span>
+        <span class="tool-title">Match & Outreach</span>
+        <p class="tool-desc">Job fit analysis plus 4 ready-to-send outreach emails.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-arrow">→</span>
+        <span class="tool-title">Interview Prep</span>
+        <p class="tool-desc">Practice with real questions and scored feedback.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-arrow">→</span>
+        <span class="tool-title">AI Career Audit</span>
+        <p class="tool-desc">Personalized report on how AI impacts their role.</p>
+      </div>
+      <div class="tool-card">
+        <span class="tool-arrow">→</span>
+        <span class="tool-title">AI Skills Resources</span>
+        <p class="tool-desc">Curated free courses, books, podcasts, and videos.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section pricing-section">
+    <div class="section-label">Pricing</div>
+    <div class="pricing-box">
+      <div class="price">2¢</div>
+      <div class="price-details">
+        <strong>per candidate who clicks</strong><br>
+        $100/month cap · No setup fees · No minimums · Cancel anytime
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta">
+    <h2>Ready to transform your rejection emails?</h2>
+    <p>Setup takes 90 seconds. Start today.</p>
+    <a href="mailto:hello@offergrace.com" class="btn-green">Get Started →</a>
+  </section>
+  
+  <footer>
+    <p><strong>Offer<span style="color: var(--green)">Grace</span></strong> — One link. Unlimited goodwill.</p>
+    <p style="margin-top: 0.5rem;">
+      <a href="mailto:hello@offergrace.com">hello@offergrace.com</a>
+    </p>
+  </footer>
 </body>
 </html>
